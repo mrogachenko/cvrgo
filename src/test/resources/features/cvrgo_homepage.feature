@@ -1,5 +1,6 @@
 @homepage
 Feature: CoverGo homepage
+
   Scenario: Page title
     Given I am on the CoverGo homepage
     Then the page title should be equal to "The Ultimate No-Code Insurance Platform | CoverGo"
@@ -13,12 +14,12 @@ Feature: CoverGo homepage
     Given I am on the CoverGo homepage
     When I looked at the "top menu items list" element
     Then It consists of the following valuable items:
-      |Why CoverGo|
-      |Our Platform|
-      |Our Clients|
-      |Resources|
-      |About Us|
-      |REQUEST DEMO|
+      | Why CoverGo  |
+      | Our Platform |
+      | Our Clients  |
+      | Resources    |
+      | About Us     |
+      | REQUEST DEMO |
 
   Scenario: Going to Request Demo page
     Given I am on the CoverGo homepage

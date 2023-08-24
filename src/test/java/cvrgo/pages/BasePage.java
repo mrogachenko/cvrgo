@@ -1,6 +1,5 @@
 package cvrgo.pages;
 
-import cvrgo.constants.MainConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
+import static cvrgo.constants.MainConstants.HARD_WAIT_LIST_RENDER_TIMEOUT_MS;
 import static cvrgo.constants.MainConstants.VIDEO_CONTAINER_WAIT_TIMEOUT_MS;
 
 public abstract class BasePage {
@@ -46,6 +45,11 @@ public abstract class BasePage {
     }
 
     public List<String> getLastObservedElementListItems() {
+        try {
+            Thread.sleep(HARD_WAIT_LIST_RENDER_TIMEOUT_MS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         ArrayList<String> result = new ArrayList<>();
         List<WebElement> elements = driver.findElements(lastObservedElement);
         for (WebElement e : elements) {
@@ -72,7 +76,8 @@ public abstract class BasePage {
         return text.equals(text.toUpperCase());
     }
 
-    /** Returned false by default since not every page
+    /**
+     * Returned false by default since not every page
      * will have 'Get In Touch' element, but some of them
      * have it. In the pages when this element is present
      * there will be override method

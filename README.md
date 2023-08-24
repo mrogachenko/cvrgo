@@ -15,7 +15,7 @@ To run all tests
 If it was the first run, wait for a while until all
 necessary libraries will be downloaded
 
-## Observe results
+## Observe Results
 During tests execution you should see scenario lines
 But there is an option to see html-report.
 
